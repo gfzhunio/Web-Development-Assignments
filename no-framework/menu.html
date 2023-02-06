@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style> 
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family:Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(220, 250, 230);
+        }
+        nav {
+            background-color: rgb(39, 156, 64);
+            display: flex;
+        }
+
+        .nav-item {
+            min-width: 100px;
+            padding: 5px 10px;
+        }
+
+        .nav-item-title {
+            font-size: large;
+        }
+
+        .menu {
+            display: none;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .menu {
+            flex-direction: column;
+            position: absolute;
+            background-color: rgb(39, 196, 64);
+            width: 100%;
+            margin-left: -10px;
+        }
+
+        .menu-item {
+            padding: 5px 10px;
+            text-decoration: none;
+        }
+
+        .nav-item:hover {
+            display: block;
+            position: relative;
+            background-color: rgb(39, 196, 64);
+        }
+
+        .nav-item:hover .menu {
+            display: flex;
+        }
+
+        .menu-item:hover {
+            background-color: rgb(39, 255, 64);
+        }
+
+        .green-card {
+            border-left: 5px solid rgb(39, 196, 64);
+        }
+
+        .yellow-card {
+            border-left: 5px solid rgb(245, 245, 80);
+        }
+
+        .green-card {
+            background-color: rgb(255, 255, 2355);
+            padding: 25px;
+            margin: 15px;
+        }
+
+        .yellow-card {
+            background-color: rgb(255, 255, 2355);
+            padding: 25px;
+            margin: 15px;
+        }
+        .card-title {
+            margin: 0;
+        }
+
+        .container {
+            margin: auto;
+            width: 75%;
+            padding: 10px;
+        }
+
+
+        
+       
+    </style>
+</head>
+<body>
+    <nav> 
+        <div class="nav-item">
+            <span class="nav-item-title bold">File</span>
+            <div class="menu">
+                <a href class="menu-item">New</a>
+                <a href class="menu-item">Open</a>
+                <a href class="menu-item">Save</a>
+                <a href class="menu-item">Print</a>
+                <a href class="menu-item">Close</a>
+            </div>
+        </div>
+        <div class="nav-item">
+            <span class="nav-item-title">Edit</span>
+            <div class="menu">
+                <a href class="menu-item">Undo</a>
+                <a href class="menu-item">Redo</a>
+                <a href class="menu-item">Cut</a>
+                <a href class="menu-item">Copy</a>
+                <a href class="menu-item">Paste</a>
+                <a href class="menu-item">Delete</a>
+                <a href class="menu-item">Select all</a>
+
+            </div>
+        </div>
+        <div class="nav-item">
+            <span class="nav-item-title bold">View</span>
+            <div class="menu">
+                <a href class="menu-item">Zoom in</a>
+                <a href class="menu-item">Zoom out</a>
+                <a href class="menu-item">Actual size</a>
+                <a href class="menu-item">Fit page</a>
+                <a href class="menu-item">Fit width</a>
+                <a href class="menu-item">Fit heigh</a>
+                <a href class="menu-item">Rotate left</a>
+                <a href class="menu-item">Rotate right</a>
+                <a href class="menu-item">Full screen</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="green-card">
+            <h2 class="card-title">Instructions</h2>
+            <p>Recreate this page using <b><i>only CSS</i></b>. Do yourself a favor and 1) Do not view the source. Figure it out yourself. 2) Do not search for the solution. Learn CSS until you know enough to do this.</p>
+        </div>
+        <div class="yellow-card">
+            <h2 class="card-title">Extra Credit</h2>
+            <p>Notice how the Edit menu (besides for not being bold) reacts to clicks. If you click the edit menu, it remains open until you click somewhere else. (This you might need to search for)</p>
+        </div>
+    </div>
+</body>
+</html>
