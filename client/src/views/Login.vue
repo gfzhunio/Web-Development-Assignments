@@ -3,15 +3,11 @@
 </script>
 
 <template>
-    <div>
-        <h1 class="title">
-            Login
-        </h1>
-        <h2 class="subtitle">
-            If you got here then you are not logged in. <br>
-            To login just click the button on the top right corner.
-        </h2>
-    </div>
+    <div>Username</div>
+    <input type="text" placeholder="Login">
+
+    <div>Password</div>
+    <input type="text" placehol>
 </template>
 
 <style scoped>

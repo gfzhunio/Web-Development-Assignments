@@ -1,11 +1,17 @@
 <script setup lang="ts">
+import { users } from '@/model/session';
+
+function getUserWorkout(username: string) {
+  return users[username as keyof typeof users]
+}
 
 </script>
 
 <template>
-  <main>
-    <h1 class="title">
-      This is our home friends activity page
-    </h1>
-  </main>
+  <div v-for="workouts, username in users">
+    <div>{{ username }} </div>
+    <div v-for="workout in workouts">
+      <div>{{ workout.typeOfWorkout }} {{ workout.location }} {{ workout.duration }} mins</div>
+    </div>
+  </div>
 </template>
