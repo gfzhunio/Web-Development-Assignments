@@ -7,7 +7,7 @@
     <input type="text" placeholder="Login">
 
     <div>Password</div>
-    <input type="text" placehol>
+    <input type="text">
 </template>
 
 <style scoped>
