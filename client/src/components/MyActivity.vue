@@ -14,11 +14,9 @@ import Modal from "./Modal.vue";
       class="button is-info is-fullwidth mt-5"
       @click="showModal"
       data-toggle="modal"
-    >
-      Create Workout
-    </button>
+    >Create Workout</button>
 
-    <Modal />
+    <Modal/>
 
     <br />
 

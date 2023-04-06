@@ -18,6 +18,7 @@ function addWorkoutWithClick() {
 </script>
 
 <template>
+  
   <div class="modal" :class="{ 'is-active': mustShowModal }">
     <div class="modal-background" @click="closeModal"></div>
     <div class="modal-content">
@@ -44,7 +45,7 @@ function addWorkoutWithClick() {
       </div>
 
       <div class="field">
-        <label class="label">Duration (mins)</label>
+        <label class="label">Duration</label>
         <div class="control">
           <input class="input" type="text" v-model="workout.duration" />
         </div>
@@ -62,7 +63,7 @@ function addWorkoutWithClick() {
           <span>Save Workout</span>
         </button>
 
-        <button class="button">
+        <button class="button" @click="closeModal">
           <span>Cancel</span>
         </button>
       </p>

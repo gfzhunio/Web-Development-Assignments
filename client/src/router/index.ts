@@ -1,6 +1,6 @@
 import Login from "@/components/Login.vue";
 import MyActivity from "@/components/MyActivity.vue";
-import CreateWorkout from "@/views/CreateWorkout.vue";
+// import CreateWorkout from "@/views/CreateWorkout.vue";
 import FriendsActivity from "@/views/FriendsActivity.vue";
 import Search from "@/views/Search.vue";
 import User from "@/views/Users.vue";
@@ -40,11 +40,7 @@ const router = createRouter({
       name: "search",
       component: Search,
     },
-    {
-      path: "/createWorkout",
-      name: "createWorkout",
-      component: CreateWorkout,
-    },
+ 
     {
       path: "/user",
       name: "user",
