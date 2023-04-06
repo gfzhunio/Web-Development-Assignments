@@ -1,26 +1,6 @@
 <script setup lang="ts">
 
-// const users = ref ([
-//   {
-//   "firstName": "Carolina",
-//   "lastName": "Zhunio",
-//   "email":"cz@Hotmail.com",
-//   "admin":"false"
-//   },
-//   {
-//     "firstName": "Lucas",
-//     "lastName": "Zhunio",
-//     "email":"LF@Hotmail.com",
-//     "admin":"false"
-//     },
-//   {
-//       "firstName": "Celeste",
-//       "lastName": "Zhunio",
-//       "email":"CC@Hotmail.com",
-//       "admin":"false"
-//     }
-// ]);
-    
+
 </script>
 <template>
     <div class="container">

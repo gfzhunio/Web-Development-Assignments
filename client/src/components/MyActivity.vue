@@ -7,7 +7,7 @@ import Modal from "./Modal.vue";
 </script>
 
 <template>
-  <div class="container mt-3">
+  <div class="container is-max-desktop mt-3">
     <h1 class="title">My activity</h1>
 
     <button
@@ -23,7 +23,7 @@ import Modal from "./Modal.vue";
     <br />
 
     <div v-for="workout, workoutIndex in workouts">
-      <nav class="level is-mobile">
+      <div class="container">
         <article class="media box">
           <figure class="media-left">
             <p class="image is-64x64">
@@ -31,16 +31,17 @@ import Modal from "./Modal.vue";
             </p>
           </figure>
 
-          <div class="media-content">
+          <div class="media-content ml-1">
             <div class="content">
               <p>
                 <strong>John Smith</strong> <small>@johnsmith</small>
                 <small>31m</small> <br />
               </p>
 
-              <div class="columns hast-text-centered"></div>
+              <div class="columns hast-text-centered">
               <div>
                 <large>{{ workout.typeOfWorkout }}</large>
+                <p class="heading">Workout Name</p>
               </div>
               <div>
                 <small>{{ workout.duration }}</small>
@@ -51,8 +52,9 @@ import Modal from "./Modal.vue";
                 <p class="heading">Location</p>
               </div>
             </div>
+            </div>
 
-            <nav class="level is-mobile">
+            <div class="level">
               <div class="level-left">
                 <a class="level-item">
                   <span class="icon is-small"
@@ -70,20 +72,26 @@ import Modal from "./Modal.vue";
                   ></span>
                 </a>
               </div>
-            </nav>
+            </div>
           </div>
           <div class="right">
             <button class="delete" @click="deleteWorkout(workoutIndex)"></button>
           </div>
         </article>
-      </nav>
+      </div>
     </div>
-  </div>
+    </div>
 </template>
 
 <style scoped>
-.content {
-  display: grid;
-  grid-template-columns: 1fr 1fr, 1fr, 1fr;
+.media-content {
+  display: inline-grid;
 }
+.columns {
+  column-gap: 50px;
+  column-width: auto;
+  rid-template-columns: 8ch auto;
+  margin-left: 10px;
+}
+
 </style>
