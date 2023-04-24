@@ -30,8 +30,6 @@ export function login() {
     firstName:"Gisela",
     email:"gf@hotmail.com",
     admin:true,
-
-
   };
 }
 
@@ -134,14 +132,3 @@ export const users = ref({
 });
 
 export const friendsWorkouts = ref([karoWorkouts]);
-
-export const allWorkouts = ref([
-  {},
-])
-
-
-
-
-
-
-
