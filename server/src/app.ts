@@ -29,11 +29,7 @@ app.post("/workout", (req: Request, res: Response) => {
 });
 
 app.delete("/workout/:id", (req: Request, res: Response) => {
-  const id = parseInt(req.params.id, 10);
 
-  const deletedWorkout = workouts.splice(id, 1)[0];
-
-  res.send(deletedWorkout);
 });
 
 app.patch("/workout/:id", (req: Request, res: Response) => {
