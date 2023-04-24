@@ -12,8 +12,10 @@ const isPasswordValid = computed(() => password.value.length >= 5);
 
 function onLoginButtonClicked() {
   currentUser.value = login(username.value, password.value);
-  router.push("/");
+  router.push("/home");
 }
+
+
 </script>
 
 <template>
@@ -66,7 +68,7 @@ function onLoginButtonClicked() {
           Login
         </button>
       </div>
-      <div class="control">
+        <div class="control">
         <button class="button is-link is-light">Cancel</button>
       </div>
     </div>

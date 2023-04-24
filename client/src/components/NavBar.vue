@@ -4,6 +4,7 @@ import router from "@/router";
 import { ref } from "vue";
 import { RouterLink } from "vue-router";
 
+
 const isMenuActive = ref(false);
 
 function toggleMenu() {
@@ -12,7 +13,7 @@ function toggleMenu() {
 
 function onLogoutButtonClick() {
   currentUser.value = null;
-  router.push("/");
+  router.push("/home");
 }
 </script>
 
@@ -20,7 +21,7 @@ function onLogoutButtonClick() {
   <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
     <div class="container">
       <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
+        <a class="navbar-item">
           <i class="fa-solid fa-dumbbell"></i>
         </a>
 
@@ -43,21 +44,21 @@ function onLogoutButtonClick() {
             <div class="icon">
               <i class="fas fa-running"></i>
             </div>
-            <span>My Activity</span>
+              <RouterLink to="/myActivity"> My Activity</RouterLink>
           </a>
 
           <a class="navbar-item">
             <div class="icon">
               <i class="fas fa-people-roof"></i>
             </div>
-            <span>Friends</span>
+            <RouterLink to="/friendsActivity">Friends</RouterLink>
           </a>
 
           <a class="navbar-item">
             <div class="icon">
               <i class="fas fa-search"></i>
             </div>
-            <span>Search</span>
+            <RouterLink to="/search">Search</RouterLink>
           </a>
 
           <div class="navbar-item has-dropdown is-hoverable">
@@ -69,11 +70,9 @@ function onLogoutButtonClick() {
             </a>
 
             <div class="navbar-dropdown">
-              <a class="navbar-item"> About </a>
-              <a class="navbar-item"> Jobs </a>
-              <a class="navbar-item"> Contact </a>
-              <hr class="navbar-divider" />
-              <a class="navbar-item"> Report an issue </a>
+              <a class="navbar-item">
+                <RouterLink to="/user">users table</RouterLink>
+              </a>
             </div>
           </div>
         </div>
