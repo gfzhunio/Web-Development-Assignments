@@ -4,7 +4,6 @@ import router from "@/router";
 import { ref } from "vue";
 import { RouterLink } from "vue-router";
 
-
 const isMenuActive = ref(false);
 
 function toggleMenu() {
@@ -40,26 +39,26 @@ function onLogoutButtonClick() {
 
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item">
+          <RouterLink to="/myActivity" class="navbar-item">
             <div class="icon">
               <i class="fas fa-running"></i>
             </div>
-              <RouterLink to="/myActivity"> My Activity</RouterLink>
-          </a>
+            <span>My Activity</span>
+          </RouterLink>
 
-          <a class="navbar-item">
+          <RouterLink to="/friendsActivity" class="navbar-item">
             <div class="icon">
               <i class="fas fa-people-roof"></i>
             </div>
-            <RouterLink to="/friendsActivity">Friends</RouterLink>
-          </a>
+            <span>My Activity</span>
+          </RouterLink>
 
-          <a class="navbar-item">
+          <RouterLink to="/search" class="navbar-item">
             <div class="icon">
               <i class="fas fa-search"></i>
             </div>
-            <RouterLink to="/search">Search</RouterLink>
-          </a>
+            <span>Search</span>
+          </RouterLink>
 
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
@@ -69,11 +68,10 @@ function onLogoutButtonClick() {
               <span>Admin</span>
             </a>
 
-            <div class="navbar-dropdown">
-              <a class="navbar-item">
-                <RouterLink to="/user">users table</RouterLink>
-              </a>
-            </div>
+            <RouterLink to="/user" class="navbar-dropdown">
+            <span>Users Table</span>
+          </RouterLink>
+          
           </div>
         </div>
 
