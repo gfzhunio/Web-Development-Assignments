@@ -86,14 +86,14 @@ function register(username: string, email: string, password: string) {
       <div class="control">
         <button
           :disabled="!isUsernameValid || !isEmailValid || !isPasswordValid"
-          class="button is-link"
+          class="button is-success"
           @click="onRegisterButtonClicked"
         >
           Register
         </button>
       </div>
       <div class="control">
-        <button class="button is-link is-light">Cancel</button>
+        <button class="button is-success is-light">Cancel</button>
       </div>
     </div>
   </div>
