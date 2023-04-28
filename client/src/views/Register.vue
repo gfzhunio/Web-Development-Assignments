@@ -30,13 +30,14 @@ function register(username: string, email: string, password: string) {
 </script>
 
 <template>
-  <div class="container is-fluid mt-5">
+  <div class="box mt-5 is-centered">
+  <div class="container is-fluid">
     <!-- USERNAME -->
     <div class="field">
       <label class="label">Username</label>
       <div class="control has-icons-left has-icons-right">
         <input
-          class="input"
+          class="input is-success is-outlined"
           type="text"
           placeholder="Text input"
           v-model="username"
@@ -53,7 +54,7 @@ function register(username: string, email: string, password: string) {
       <label class="label">Email</label>
       <div class="control has-icons-left has-icons-right">
         <input
-          class="input"
+          class="input is-success is-outlined"
           type="email"
           placeholder="Email input"
           v-model="email"
@@ -70,7 +71,7 @@ function register(username: string, email: string, password: string) {
       <label class="label">Password</label>
       <div class="control has-icons-left has-icons-right">
         <input
-          class="input"
+          class="input is-success is-outlined"
           type="email"
           placeholder="Email input"
           v-model="password"
@@ -93,10 +94,17 @@ function register(username: string, email: string, password: string) {
         </button>
       </div>
       <div class="control">
-        <button class="button is-success is-light">Cancel</button>
+        <button class="button is-danger is-light">Cancel</button>
       </div>
     </div>
   </div>
+</div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.box{
+  margin:auto;
+  background-color: rgb(239, 245, 203);
+  width: 382px;
+}
+</style>
