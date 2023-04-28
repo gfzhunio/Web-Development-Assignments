@@ -37,7 +37,7 @@ function onLogoutButtonClick() {
             <div class="icon">
               <i class="fas fa-people-roof"></i>
             </div>
-            <span>My Activity</span>
+            <span>Friends Activity</span>
           </RouterLink>
 
           <RouterLink to="/search" class="navbar-item">
