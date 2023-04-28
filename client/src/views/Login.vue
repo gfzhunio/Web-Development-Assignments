@@ -19,7 +19,7 @@ function onLoginButtonClicked() {
 </script>
 
 <template>
-  <div class="box mt-5 mr-5 ml-5">
+  <div class="box mt-5 is-centered">
   <div class="container is-fluid">
     <!-- USERNAME -->
     <div class="field">
@@ -77,4 +77,11 @@ function onLoginButtonClicked() {
 </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.box{
+  margin: auto;
+  background-color: rgb(239, 245, 203);
+  width: 382px;
+  
+}
+</style>
