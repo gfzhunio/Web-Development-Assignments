@@ -24,21 +24,8 @@ function onLogoutButtonClick() {
           <i class="fa-solid fa-dumbbell"></i>
         </a>
 
-        <a
-          role="button"
-          class="navbar-burger"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbarBasicExample"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-
-      <div id="navbarBasicExample" class="navbar-menu is-active">
-        <div class="navbar-start">
+        
+    
           <RouterLink to="/myActivity" class="navbar-item">
             <div class="icon">
               <i class="fas fa-running"></i>
@@ -59,7 +46,21 @@ function onLogoutButtonClick() {
             </div>
             <span>Search</span>
           </RouterLink>
-
+          
+          <a
+          class="navbar-burger is-active"
+          aria-label="menu"
+          aria-expanded="true"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+          </div>
+          
+          <div id="navbarBasicExample" class="navbar-menu is-active">
+          <div class="navbar-start">
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
               <span class="icon">
