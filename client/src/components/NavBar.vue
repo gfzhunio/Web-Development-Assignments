@@ -37,7 +37,7 @@ function onLogoutButtonClick() {
         </a>
       </div>
 
-      <div id="navbarBasicExample" class="navbar-menu">
+      <div id="navbarBasicExample" class="navbar-menu is-active">
         <div class="navbar-start">
           <RouterLink to="/myActivity" class="navbar-item">
             <div class="icon">
