@@ -48,7 +48,9 @@ function onLogoutButtonClick() {
           </RouterLink>
           
           <a
-          class="navbar-burger is-active"
+          class="navbar-burger"
+          :class="{ 'is-active' : isMenuActive}"
+          @click="toggleMenu"
           aria-label="menu"
           aria-expanded="true"
           data-target="navbarBasicExample"
@@ -59,7 +61,7 @@ function onLogoutButtonClick() {
         </a>
           </div>
           
-          <div id="navbarBasicExample" class="navbar-menu is-active">
+          <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active' : isMenuActive}">
           <div class="navbar-start">
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
