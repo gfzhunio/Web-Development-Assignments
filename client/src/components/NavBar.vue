@@ -26,14 +26,14 @@ function onLogoutButtonClick() {
 
         
     
-          <RouterLink to="/myActivity" class="navbar-item">
+          <RouterLink v-if="currentUser" to="/myActivity" class="navbar-item">
             <div class="icon">
               <i class="fas fa-running"></i>
             </div>
             <span>My Activity</span>
           </RouterLink>
 
-          <RouterLink to="/friendsActivity" class="navbar-item">
+          <RouterLink v-if="currentUser" to="/friendsActivity" class="navbar-item">
             <div class="icon">
               <i class="fas fa-people-roof"></i>
             </div>
