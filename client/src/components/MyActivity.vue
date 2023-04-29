@@ -84,7 +84,7 @@ reloadWorkouts();
             </div>
           </div>
           <div class="right">
-            <button class="delete" @click="deleteWorkout(workout._id)"></button>
+            <button class="delete" @click="deleteWorkout(workout._id as string)"></button>
           </div>
         </article>
       </div>
