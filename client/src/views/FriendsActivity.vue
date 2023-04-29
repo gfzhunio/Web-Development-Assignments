@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { users, workouts} from '@/model/session';
 import { showModal, deleteWorkout} from '@/model/model';
-import Modal from '@/components/Modal.vue';
+import CreateWorkoutModal from '@/components/CreateWorkoutModal.vue';
 
 
 function getUserWorkout(username: string) {
@@ -28,7 +28,7 @@ function getUserWorkout(username: string) {
       data-toggle="modal"
     >Create Workout</button>
 
-    <Modal/>
+    <CreateWorkoutModal/>
 
     <br />
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { showModal, deleteWorkout } from "@/model/model";
 import { workouts } from "@/model/session";
-import Modal from "./Modal.vue";
+import CreateWorkoutModal from "./CreateWorkoutModal.vue";
 
 
 </script>
@@ -16,7 +16,7 @@ import Modal from "./Modal.vue";
       data-toggle="modal"
     >Create Workout</button>
 
-    <Modal/>
+    <CreateWorkoutModal/>
 
     <br />
 
