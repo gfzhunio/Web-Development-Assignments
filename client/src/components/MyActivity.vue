@@ -1,9 +1,23 @@
 <script setup lang="ts">
-import { showModal, deleteWorkout } from "@/model/model";
-import { workouts } from "@/model/session";
-import Modal from "./Modal.vue";
+import { currentUser } from "@/data/user";
+import { showModal, workouts } from "@/model/model";
+import axios from "axios";
+import CreateWorkoutModal from "./CreateWorkoutModal.vue";
 
+async function reloadWorkouts() {
+  const { data } = await axios.get(
+    `http://localhost:3000/workout/${currentUser.value?._id}`
+  );
 
+  workouts.value = data;
+}
+
+async function deleteWorkout(workoutId: string) {
+  await axios.delete(`http://localhost:3000/workout/${workoutId}`);
+  await reloadWorkouts();
+}
+
+reloadWorkouts();
 </script>
 
 <template>
@@ -14,42 +28,39 @@ import Modal from "./Modal.vue";
       class="button is-info is-fullwidth mt-5"
       @click="showModal"
       data-toggle="modal"
-    >Create Workout</button>
+    >
+      Create Workout
+    </button>
 
-    <Modal/>
+    <CreateWorkoutModal />
 
     <br />
 
-    <div v-for="workout, workoutIndex in workouts">
+    <div v-for="workout in workouts">
       <div class="container">
         <article class="media box">
-          <figure class="media-left">
-            <p class="image is-64x64">
-              <img src="https://bulma.io/images/placeholders/128x128.png" />
-            </p>
-          </figure>
-
           <div class="media-content ml-1">
             <div class="content">
               <p>
-                <strong>John Smith</strong> <small>@johnsmith</small>
-                <small>31m</small> <br />
+                <strong>{{ workout.user?.username }}</strong>
+                <small>{{ workout.user?.email }}</small> <small>31m</small>
+                <br />
               </p>
 
               <div class="columns hast-text-centered">
-              <div>
-                <large>{{ workout.typeOfWorkout }}</large>
-                <p class="heading">Workout Name</p>
+                <div>
+                  <large>{{ workout.typeOfWorkout }}</large>
+                  <p class="heading">Workout Name</p>
+                </div>
+                <div>
+                  <small>{{ workout.duration }}</small>
+                  <p class="heading">Duration</p>
+                </div>
+                <div>
+                  <small>{{ workout.location }}</small>
+                  <p class="heading">Location</p>
+                </div>
               </div>
-              <div>
-                <small>{{ workout.duration }}</small>
-                <p class="heading">Duration</p>
-              </div>
-              <div>
-                <small>{{ workout.location }}</small>
-                <p class="heading">Location</p>
-              </div>
-            </div>
             </div>
 
             <div class="level">
@@ -73,12 +84,12 @@ import Modal from "./Modal.vue";
             </div>
           </div>
           <div class="right">
-            <button class="delete" @click="deleteWorkout(workoutIndex)"></button>
+            <button class="delete" @click="deleteWorkout(workout._id)"></button>
           </div>
         </article>
       </div>
     </div>
-    </div>
+  </div>
 </template>
 
 <style scoped>
@@ -91,5 +102,4 @@ import Modal from "./Modal.vue";
   rid-template-columns: 8ch auto;
   margin-left: 10px;
 }
-
 </style>

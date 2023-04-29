@@ -1,23 +1,23 @@
 /* B"H
  */
 import { ref } from "vue";
-import { workouts } from "./session";
+import type { User } from "./user";
 
 interface Workout {
+  _id?: string;
   typeOfWorkout: string;
-  date: string;
   duration: number;
   location: string;
-  imageURL: string;
+  user?: User;
 }
 
 export const workout = ref<Workout>({
-  typeOfWorkout: "",
-  date: "",
-  duration: 0,
-  location: "",
-  imageURL: "",
+  typeOfWorkout: "Biking",
+  duration: 15,
+  location: "Newburgh, NY",
 });
+
+export const workouts = ref<Workout[]>([]);
 
 export const mustShowModal = ref(false);
 
@@ -27,8 +27,4 @@ export function showModal() {
 
 export function closeModal() {
   mustShowModal.value = false;
-}
-
-export function deleteWorkout(index: number) {
-  workouts.value.splice(index, 1);
 }

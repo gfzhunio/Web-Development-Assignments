@@ -1,38 +1,27 @@
 <script setup lang="ts">
-import { users, workouts} from '@/model/session';
-import { showModal, deleteWorkout} from '@/model/model';
-import Modal from '@/components/Modal.vue';
+import CreateWorkoutModal from '@/components/CreateWorkoutModal.vue';
+import { currentUser } from '@/data/user';
+import { showModal, workouts } from '@/model/model';
+import axios from 'axios';
 
+async function reloadWorkouts() {
+  const { data } = await axios.get("http://localhost:3000/workout");
 
-function getUserWorkout(username: string) {
-  return users[username as keyof typeof users]
+  workouts.value = data;
 }
+
+reloadWorkouts();
 
 </script>
 
 <template>
-  <!-- <div v-for="workouts, username in users">
-    <div>{{ username }} </div>
-    <div v-for="workout in workouts">
-      <div>{{ workout.typeOfWorkout }} {{ workout.location }} {{ workout.duration }} mins</div>
-    </div>
-  </div> -->
-
   <body>
     <div class="container is-max-desktop mt-3">
     <h1 class="title">Friends activity</h1>
 
-    <button
-      class="button is-info is-fullwidth mt-5"
-      @click="showModal"
-      data-toggle="modal"
-    >Create Workout</button>
-
-    <Modal/>
-
     <br />
 
-    <div v-for="workout, username in workouts">
+    <div v-for="workout in workouts">
       <div class="container">
         <article class="media box">
           <figure class="media-left">
@@ -44,7 +33,7 @@ function getUserWorkout(username: string) {
           <div class="media-content ml-1">
             <div class="content">
               <p>
-                <div> {{ username }} </div>
+                <div> {{ workout.user?.username }} {{ workout.user?.email }} </div>
               </p>
               
               <div class="columns hast-text-centered">
