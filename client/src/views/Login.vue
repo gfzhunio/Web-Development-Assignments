@@ -1,87 +1,91 @@
 <script setup lang="ts">
-import { login } from "@/util/user";
 import { currentUser } from "@/data/user";
-import { computed, ref } from "vue";
 import router from "@/router";
+import axios from "axios";
+import { computed, ref } from "vue";
 
-const username = ref("jfugon");
+const username = ref("gzhunio");
 const password = ref("12345");
 
 const isUsernameValid = computed(() => username.value.length >= 5);
 const isPasswordValid = computed(() => password.value.length >= 5);
 
-function onLoginButtonClicked() {
-  currentUser.value = login(username.value, password.value);
-  router.push("/home");
+async function onLoginButtonClicked() {
+  try {
+    const body = { username: username.value, password: password.value };
+    const { data } = await axios.post("http://localhost:3000/login", body);
+
+    currentUser.value = data;
+    router.push("/home");
+  } catch (error) {
+    currentUser.value = null;
+  }
 }
-
-
 </script>
 
 <template>
   <div class="box mt-5 is-centered">
-  <div class="container is-fluid">
-    <!-- USERNAME -->
-    <div class="field">
-      <label class="label">Username</label>
-      <div class="control has-icons-left has-icons-right">
-        <input
-          class="input is-success is-outlined"
-          type="text"
-          placeholder="Text input"
-          v-model="username"
-        />
-        <span class="icon is-small is-left">
-          <i class="fas fa-user"></i>
-        </span>
+    <div class="container is-fluid">
+      <!-- USERNAME -->
+      <div class="field">
+        <label class="label">Username</label>
+        <div class="control has-icons-left has-icons-right">
+          <input
+            class="input is-success is-outlined"
+            type="text"
+            placeholder="Text input"
+            v-model="username"
+          />
+          <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
+        </div>
+        <p v-if="!isUsernameValid" class="help is-danger">
+          Please enter at least 5 characters
+        </p>
       </div>
-      <p v-if="!isUsernameValid" class="help is-danger">
-        Please enter at least 5 characters
-      </p>
-    </div>
 
-    <!-- PASSWORD -->
-    <div class="field">
-      <label class="label">Password</label>
-      <div class="control has-icons-left has-icons-right">
-        <input
-          class="input is-success is-outlined"
-          type="email"
-          placeholder="Email input"
-          v-model="password"
-        />
-        <span class="icon is-small is-left">
-          <i class="fas fa-key"></i>
-        </span>
+      <!-- PASSWORD -->
+      <div class="field">
+        <label class="label">Password</label>
+        <div class="control has-icons-left has-icons-right">
+          <input
+            class="input is-success is-outlined"
+            type="email"
+            placeholder="Email input"
+            v-model="password"
+          />
+          <span class="icon is-small is-left">
+            <i class="fas fa-key"></i>
+          </span>
+        </div>
+        <p v-if="!isPasswordValid" class="help is-danger">
+          Please enter at least 5 characters
+        </p>
       </div>
-      <p v-if="!isPasswordValid" class="help is-danger">
-        Please enter at least 5 characters
-      </p>
-    </div>
 
-    <div class="field is-grouped">
-      <div class="control">
-        <button
-          :disabled="!isUsernameValid || !isPasswordValid"
-          class="button is-success"
-          @click="onLoginButtonClicked"
-        >
-          Login
-        </button>
-      </div>
+      <div class="field is-grouped">
         <div class="control">
-        <button class="button is-danger is-light">Cancel</button>
+          <button
+            :disabled="!isUsernameValid || !isPasswordValid"
+            class="button is-success"
+            @click="onLoginButtonClicked"
+          >
+            Login
+          </button>
+        </div>
+        <div class="control">
+          <button class="button is-danger is-light">Cancel</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <style scoped>
-.box{
+.box {
   margin: auto;
   background-color: rgb(239, 245, 203);
   width: 382px;
-  
 }
 </style>
