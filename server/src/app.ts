@@ -2,6 +2,7 @@ require("dotenv").config();
 import bodyParser from "body-parser";
 import cors from "cors";
 import express, { Request, Response } from "express";
+import { ObjectId } from "mongodb";
 import { Collection } from "./database";
 
 const app = express();
@@ -44,19 +45,56 @@ app.post("/user", async (req: Request, res: Response) => {
   res.send(user);
 });
 
-app.get("/workout", (req: Request, res: Response) => {
-  res.send({ hello: 1 });
+app.get("/workout", async (req: Request, res: Response) => {
+  const workouts = await Collection.workout.find().toArray();
+
+  for (const workout of workouts) {
+    workout.user = await Collection.user.findOne({
+      _id: new ObjectId(workout.userId),
+    });
+  }
+
+  res.send(workouts);
 });
 
-app.post("/workout", (req: Request, res: Response) => {
-  const workout = req.body;
+app.get("/workout/:userId", async (req: Request, res: Response) => {
+  const { userId } = req.params;
 
-  workouts.push(workout);
+  const workouts = await Collection.workout.find({ userId }).toArray();
+
+  for (const workout of workouts) {
+    workout.user = await Collection.user.findOne({
+      _id: new ObjectId(workout.userId),
+    });
+  }
+
+  res.send(workouts);
+});
+
+app.post("/workout", async (req: Request, res: Response) => {
+  const { typeOfWorkout, duration, location, userId } = req.body;
+
+  const { insertedId } = await Collection.workout.insertOne({
+    typeOfWorkout,
+    duration,
+    location,
+    userId,
+  });
+
+  const workout = await Collection.workout.findOne({ _id: insertedId });
 
   res.send(workout);
 });
 
-app.delete("/workout/:id", (req: Request, res: Response) => {});
+app.delete("/workout/:id", async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  const workout = await Collection.workout.findOne({ _id: new ObjectId(id) });
+
+  await Collection.workout.deleteOne({ _id: new ObjectId(id) });
+
+  res.send(workout);
+});
 
 app.patch("/workout/:id", (req: Request, res: Response) => {
   const id = parseInt(req.params.id, 10);
