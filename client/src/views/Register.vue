@@ -7,6 +7,7 @@ import { computed, ref } from "vue";
 const username = ref("gzhunio");
 const email = ref("karo@fitness.com");
 const password = ref("12345");
+const isAdmin = ref(false);
 
 const isUsernameValid = computed(() => username.value.length >= 5);
 const isEmailValid = computed(() => validateEmail(email.value));
@@ -28,7 +29,7 @@ async function onRegisterButtonClicked() {
   };
   const { data } = await axios.post("http://localhost:3000/user", body);
   currentUser.value = data;
-  await router.push("/home");
+  await router.push("/login");
 }
 </script>
 

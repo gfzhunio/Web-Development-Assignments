@@ -32,17 +32,29 @@ app.post("/login", async (req: Request, res: Response) => {
 });
 
 app.post("/user", async (req: Request, res: Response) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, isAdmin = false} = req.body;
 
   const { insertedId } = await Collection.user.insertOne({
     username,
     email,
     password,
+    isAdmin,
   });
 
   const user = await Collection.user.findOne({ _id: insertedId });
 
   res.send(user);
+});
+
+app.get("/user", async (req: Request, res: Response)=> {
+  const users = await Collection.user.find().toArray();
+
+  for(const user of users){
+    user.user = await Collection.user.findOne({
+      _id: new ObjectId(user.userId),
+    })
+  }
+  res.send(users);
 });
 
 app.get("/workout", async (req: Request, res: Response) => {

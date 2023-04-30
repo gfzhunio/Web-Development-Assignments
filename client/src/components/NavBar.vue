@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { currentUser } from "@/data/user";
 import router from "@/router";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { RouterLink } from "vue-router";
 
 const isMenuActive = ref(false);
@@ -14,6 +14,9 @@ function onLogoutButtonClick() {
   currentUser.value = null;
   router.push("/home");
 }
+
+const userLogIn = computed(() => !!currentUser.value);
+
 </script>
 
 <template>
@@ -24,32 +27,34 @@ function onLogoutButtonClick() {
           <i class="fa-solid fa-dumbbell"></i>
         </a>
 
-        
-    
-          <RouterLink v-if="currentUser" to="/myActivity" class="navbar-item">
-            <div class="icon">
-              <i class="fas fa-running"></i>
-            </div>
-            <span>My Activity</span>
-          </RouterLink>
+        <RouterLink v-if="currentUser" to="/myActivity" class="navbar-item">
+          <div class="icon">
+            <i class="fas fa-running"></i>
+          </div>
+          <span>My Activity</span>
+        </RouterLink>
 
-          <RouterLink v-if="currentUser" to="/friendsActivity" class="navbar-item">
-            <div class="icon">
-              <i class="fas fa-people-roof"></i>
-            </div>
-            <span>Friends Activity</span>
-          </RouterLink>
+        <RouterLink
+          v-if="currentUser"
+          to="/friendsActivity"
+          class="navbar-item"
+        >
+          <div class="icon">
+            <i class="fas fa-people-roof"></i>
+          </div>
+          <span>Friends Activity</span>
+        </RouterLink>
 
-          <RouterLink to="/search" class="navbar-item">
-            <div class="icon">
-              <i class="fas fa-search"></i>
-            </div>
-            <span>Search</span>
-          </RouterLink>
-          
-          <a
+        <RouterLink to="/search" class="navbar-item">
+          <div class="icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <span>Search</span>
+        </RouterLink>
+
+        <a
           class="navbar-burger"
-          :class="{ 'is-active' : isMenuActive}"
+          :class="{ 'is-active': isMenuActive }"
           @click="toggleMenu"
           aria-label="menu"
           aria-expanded="true"
@@ -59,11 +64,18 @@ function onLogoutButtonClick() {
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </a>
-          </div>
-          
-          <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active' : isMenuActive}">
-          <div class="navbar-start">
-          <div class="navbar-item has-dropdown is-hoverable">
+      </div>
+
+      <div
+        id="navbarBasicExample"
+        class="navbar-menu"
+        :class="{ 'is-active': isMenuActive }"
+      >
+        <div class="navbar-start" v-if="userLogIn && !!currentUser?.isAdmin">
+          <div
+            class="navbar-item has-dropdown is-hoverable"
+        
+          >
             <a class="navbar-link">
               <span class="icon">
                 <i class="fas fa-user-secret"></i>
@@ -72,9 +84,8 @@ function onLogoutButtonClick() {
             </a>
 
             <RouterLink to="/user" class="navbar-dropdown">
-            <span>Users Table</span>
-          </RouterLink>
-          
+              <span>Users Table</span>
+            </RouterLink>
           </div>
         </div>
 

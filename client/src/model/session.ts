@@ -8,12 +8,11 @@ export const session = reactive({
   user: null as User | null,
 });
 interface User {
-  name: string;
-  lastName: string;
-  firstName: string;
+  username: string;
   email?: string;
   photo?: string;
-  admin: Boolean;
+  password?: string;
+  isAdmin?: boolean;
 }
 
 export function useSession() {
@@ -22,11 +21,11 @@ export function useSession() {
 
 export function login() {
   session.user = {
-    name: "Gisela Fugon",
-    lastName: "Fugon",
-    firstName: "Gisela",
+    username: "gfugon",
     email: "gf@hotmail.com",
-    admin: true,
+    photo:"",
+    password: "12345",
+    isAdmin: false,
   };
 }
 

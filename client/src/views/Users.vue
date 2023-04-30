@@ -1,5 +1,17 @@
 <script setup lang="ts">
+import { currentUser } from "@/data/user";
+import type { User } from "@/model/user";
+import axios from "axios";
+import { ref } from "vue";
 
+const users = ref<User[]>([]);
+
+async function getUsers() {
+    const { data } = await axios.get(`http://localhost:3000/user`);
+    users.value = data;
+}
+
+getUsers();
 
 </script>
 <template>
@@ -16,19 +28,18 @@
     <table class="table is-bordered is-stripped is-narrow is-hoverable is-fullwidth">
         <thead>
             <tr>
-                <th><abbr title="firstName">First Name</abbr></th>
-                <th><abbr title="lastName">Last Name</abbr></th>
+                <th><abbr title="firstName">Username</abbr></th>
                 <th><abbr title="email">Email</abbr></th>
                 <th><abbr title="isAdmin">Is Admin</abbr></th>
                 <th><abbr title="box"></abbr></th>
             </tr>
         </thead>
 
-        <tbody>
-            <th>Gisela</th>
-            <th>Zhunio</th>
-            <th>Gisela@hotmail.com</th>
-            <th>yes</th>
+        <tbody v-for="currentUser in users">
+            <th>{{ currentUser.username }}</th>
+            <th>{{ currentUser.email }}</th>
+            <th>{{ currentUser.isAdmin }}</th>
+            <th></th>
             <th>
                 <abbr title="Played">
                     <button class="button"><i class="fas fa-edit"></i></button>
