@@ -41,6 +41,7 @@ const router = createRouter({
       path: "/friendsActivity",
       name: "friendsActivity",
       component: FriendsActivity,
+      beforeEnter: secureGuard,
     },
     {
       path: "/search",
@@ -52,6 +53,7 @@ const router = createRouter({
       path: "/user",
       name: "user",
       component: Users,
+      beforeEnter: secureGuard,
     },
   ],
 });
