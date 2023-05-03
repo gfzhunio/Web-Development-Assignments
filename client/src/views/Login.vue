@@ -17,7 +17,7 @@ async function onLoginButtonClicked() {
     const { data } = await axios.post("http://localhost:3000/login", body);
 
     currentUser.value = data;
-    router.push("/home");
+    router.push("/");
   } catch (error) {
     currentUser.value = null;
   }

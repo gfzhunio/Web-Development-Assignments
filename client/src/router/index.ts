@@ -68,9 +68,6 @@ function secureRoute(
   if (session.user) {
     next();
   } else {
-    if (!session.redirectUrl && to.path != "/login") {
-      session.redirectUrl = to.fullPath;
-    }
     next("/login");
   }
 }
