@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { currentUser } from "@/data/user";
-import { session } from "@/model/session";
 import router from "@/router";
 import axios from "axios";
 import { computed, ref } from "vue";
@@ -17,12 +16,12 @@ async function onLoginButtonClicked() {
     const { data } = await axios.post("http://localhost:3000/login", body);
 
     currentUser.value = data;
+    localStorage.setItem("user", JSON.stringify(currentUser.value));
     router.push("/");
   } catch (error) {
     currentUser.value = null;
   }
 }
-
 </script>
 
 <template>
