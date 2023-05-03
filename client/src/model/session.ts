@@ -4,8 +4,10 @@
 import { reactive } from "vue";
 import { useRouter } from "vue-router";
 
+
 export const session = reactive({
   user: null as User | null,
+
 });
 interface User {
   username: string;
@@ -23,7 +25,7 @@ export function login() {
   session.user = {
     username: "gfugon",
     email: "gf@hotmail.com",
-    photo:"",
+    photo: "",
     password: "12345",
     isAdmin: false,
   };
@@ -38,3 +40,5 @@ export function useLogout() {
     router.push("/login");
   };
 }
+
+

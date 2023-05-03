@@ -32,6 +32,7 @@ getUsers();
                 <th><abbr title="email">Email</abbr></th>
                 <th><abbr title="isAdmin">Is Admin</abbr></th>
                 <th><abbr title="box"></abbr></th>
+                <th></th>
             </tr>
         </thead>
 

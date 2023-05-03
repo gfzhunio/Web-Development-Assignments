@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import CreateWorkoutModal from '@/components/CreateWorkoutModal.vue';
-import { currentUser } from '@/data/user';
-import { showModal, workouts } from '@/model/model';
+import { workouts } from '@/model/model';
 import axios from 'axios';
 
 async function reloadWorkouts() {
@@ -84,7 +82,7 @@ reloadWorkouts();
 
 <style scoped>
 .box{
-  width: 387px;
+  width: 500px;
 }
 .container{
   width: 387px;

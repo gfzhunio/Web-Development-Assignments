@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { currentUser } from "@/data/user";
+import { session } from "@/model/session";
 import router from "@/router";
 import { computed, ref } from "vue";
 import { RouterLink } from "vue-router";
@@ -12,18 +13,16 @@ function toggleMenu() {
 
 function onLogoutButtonClick() {
   currentUser.value = null;
-  router.push("/home");
+  router.push("/");
 }
-
-const userLogIn = computed(() => !!currentUser.value);
 
 </script>
 
 <template>
   <nav class="navbar is-success" role="navigation" aria-label="main navigation">
     <div class="container">
-      <div class="navbar-brand ">
-        <RouterLink to="/home" class="navbar-item ">
+      <div class="navbar-brand">
+        <RouterLink to="/" class="navbar-item">
           <div class="icon">
             <i class="fa-solid fa-dumbbell"></i>
           </div>
@@ -72,11 +71,8 @@ const userLogIn = computed(() => !!currentUser.value);
         class="navbar-menu"
         :class="{ 'is-active': isMenuActive }"
       >
-        <div class="navbar-start" v-if="userLogIn && !!currentUser?.isAdmin">
-          <div
-            class="navbar-item has-dropdown is-hoverable"
-        
-          >
+        <div class="navbar-start" v-if="currentUser && !!currentUser?.isAdmin">
+          <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
               <span class="icon">
                 <i class="fas fa-user-secret"></i>
@@ -85,7 +81,7 @@ const userLogIn = computed(() => !!currentUser.value);
             </a>
 
             <RouterLink to="/user" class="navbar-dropdown">
-              <span>Users Table</span>
+              <span class="user ml-2">Users Table</span>
             </RouterLink>
           </div>
         </div>
@@ -106,6 +102,7 @@ const userLogIn = computed(() => !!currentUser.value);
                 to="/login"
                 >Login</RouterLink
               >
+              <button v-if="currentUser" class="button is-light">{{ currentUser.username }}</button>
               <button
                 v-if="currentUser"
                 class="button is-light"
@@ -121,5 +118,4 @@ const userLogIn = computed(() => !!currentUser.value);
   </nav>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

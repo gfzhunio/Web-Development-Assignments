@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { currentUser } from "@/data/user";
+import { session } from "@/model/session";
 import router from "@/router";
 import axios from "axios";
 import { computed, ref } from "vue";
@@ -21,14 +22,15 @@ async function onLoginButtonClicked() {
     currentUser.value = null;
   }
 }
+
 </script>
 
 <template>
-  <div class="box mt-5 is-centered">
+  <div class="box mt-5 has-background-success-light is-centered">
     <div class="container is-fluid">
       <!-- USERNAME -->
       <div class="field">
-        <label class="label">Username</label>
+        <label class="label has-text-success-dark">Username</label>
         <div class="control has-icons-left has-icons-right">
           <input
             class="input is-success is-outlined"
@@ -85,7 +87,6 @@ async function onLoginButtonClicked() {
 <style scoped>
 .box {
   margin: auto;
-  background-color: rgb(239, 245, 203);
   width: 382px;
 }
 </style>
