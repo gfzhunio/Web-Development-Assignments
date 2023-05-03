@@ -22,10 +22,10 @@ reloadWorkouts();
 
 <template>
   <div class="container is-max-desktop mt-3">
-    <h1 class="title">My activity</h1>
+    <h1 class="title has-text-success-dark">My activity</h1>
 
     <button
-      class="button is-info is-fullwidth mt-5"
+      class="button has-background-success-light is-fullwidth mt-5 has-text-success-dark is-success is-outlined is-rounded"
       @click="showModal"
       data-toggle="modal"
     >
@@ -38,8 +38,8 @@ reloadWorkouts();
 
     <div v-for="workout in workouts">
       <div class="container">
-        <article class="media box">
-          <div class="media-content ml-1">
+        <article class="media box has-background-success-light">
+          <div class="media-content ml-3">
             <div class="content">
               <p>
                 <strong>{{ workout.user?.username }}</strong>
@@ -47,7 +47,7 @@ reloadWorkouts();
                 <br />
               </p>
 
-              <div class="columns hast-text-centered">
+              <div class="columns hast-text-centered mt-3">
                 <div>
                   <large>{{ workout.typeOfWorkout }}</large>
                   <p class="heading">Workout Name</p>
@@ -65,7 +65,7 @@ reloadWorkouts();
 
             <div class="level">
               <div class="level-left">
-                <a class="level-item">
+                <a class="level-item ">
                   <span class="icon is-small"
                     ><i class="fas fa-reply"></i
                   ></span>

@@ -20,13 +20,14 @@ const userLogIn = computed(() => !!currentUser.value);
 </script>
 
 <template>
-  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+  <nav class="navbar is-success" role="navigation" aria-label="main navigation">
     <div class="container">
-      <div class="navbar-brand">
-        <a class="navbar-item">
-          <i class="fa-solid fa-dumbbell"></i>
-        </a>
-
+      <div class="navbar-brand ">
+        <RouterLink to="/home" class="navbar-item ">
+          <div class="icon">
+            <i class="fa-solid fa-dumbbell"></i>
+          </div>
+        </RouterLink>
         <RouterLink v-if="currentUser" to="/myActivity" class="navbar-item">
           <div class="icon">
             <i class="fas fa-running"></i>
@@ -120,4 +121,5 @@ const userLogIn = computed(() => !!currentUser.value);
   </nav>
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>

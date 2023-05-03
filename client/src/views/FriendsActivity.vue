@@ -17,13 +17,13 @@ reloadWorkouts();
 <template>
   <body>
     <div class="container is-max-desktop mt-3">
-    <h1 class="title">Friends activity</h1>
+    <h1 class="title has-text-success-dark mt-5">Friends activity</h1>
 
     <br />
 
     <div v-for="workout in workouts">
       <div class="container">
-        <article class="media box">
+        <article class="media box has-background-success-light">
           <figure class="media-left">
             <p class="image is-64x64">
               <img src="https://bulma.io/images/placeholders/128x128.png" />
@@ -81,3 +81,13 @@ reloadWorkouts();
     </div>
   </body>
 </template>
+
+<style scoped>
+.box{
+  width: 387px;
+}
+.container{
+  width: 387px;
+}
+
+</style>
