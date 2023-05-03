@@ -7,56 +7,53 @@ import { ref } from "vue";
 const users = ref<User[]>([]);
 
 async function getUsers() {
-    const { data } = await axios.get(`http://localhost:3000/user`);
-    users.value = data;
+  const { data } = await axios.get(`http://localhost:3000/user`);
+  users.value = data;
 }
 
 getUsers();
-
 </script>
 <template>
-    <div class="container">
-        <button class="button is-primary mt-5">
-            <span class="icon is-small">
-                <i class="fa-sharp fa-solid fa-plus"></i>
-            </span>
-            <span>Add User</span>
-        </button>
-    </div>
-    <div class="container">
-        <div class="column is-full">
-    <table class="table is-bordered is-stripped is-narrow is-hoverable is-fullwidth">
-        <thead>
-            <tr>
-                <th><abbr title="firstName">Username</abbr></th>
-                <th><abbr title="email">Email</abbr></th>
-                <th><abbr title="isAdmin">Is Admin</abbr></th>
-                <th><abbr title="box"></abbr></th>
-                <th></th>
-            </tr>
-        </thead>
+  <div class="container is-fluid">
+    <button class="button is-primary mt-5">
+      <span class="icon is-small">
+        <i class="fa-sharp fa-solid fa-plus"></i>
+      </span>
+      <span>Add User</span>
+    </button>
+  </div>
+  <div class="container is-fluid mt-2">
+    <table
+      class="table is-bordered is-stripped is-narrow is-hoverable is-fullwidth"
+    >
+      <thead>
+        <tr>
+          <th><abbr title="firstName">Username</abbr></th>
+          <th><abbr title="email">Email</abbr></th>
+          <th><abbr title="isAdmin">Is Admin</abbr></th>
+          <th><abbr title="box"></abbr></th>
+          <th></th>
+        </tr>
+      </thead>
 
-        <tbody v-for="currentUser in users">
-            <th>{{ currentUser.username }}</th>
-            <th>{{ currentUser.email }}</th>
-            <th>{{ currentUser.isAdmin }}</th>
-            <th></th>
-            <th>
-                <abbr title="Played">
-                    <button class="button"><i class="fas fa-edit"></i></button>
-                    <button class="button"><i class="fas fa-trash"></i></button>
-                  </abbr>
-            </th>
-        </tbody>
+      <tbody v-for="currentUser in users">
+        <th>{{ currentUser.username }}</th>
+        <th>{{ currentUser.email }}</th>
+        <th>{{ currentUser.isAdmin }}</th>
+        <th></th>
+        <th>
+          <abbr title="Played">
+            <button class="button"><i class="fas fa-edit"></i></button>
+            <button class="button"><i class="fas fa-trash"></i></button>
+          </abbr>
+        </th>
+      </tbody>
     </table>
-</div>
-</div>
-    
+  </div>
 </template>
-
 
 <style scoped>
 .container {
-    align-content: center;
+  align-content: center;
 }
 </style>
