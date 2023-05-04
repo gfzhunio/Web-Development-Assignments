@@ -21,7 +21,7 @@ reloadWorkouts();
 </script>
 
 <template>
-  <div class="container is-fluid mt-5">
+  <div class="container is-fluid mt-5 rm-5 lm-5">
     <h1 class="title has-text-success-dark">My activity</h1>
 
     <button
@@ -102,4 +102,5 @@ reloadWorkouts();
   rid-template-columns: 8ch auto;
   margin-left: 10px;
 }
+
 </style>

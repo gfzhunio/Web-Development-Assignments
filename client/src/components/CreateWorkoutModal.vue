@@ -25,7 +25,7 @@ async function onCreateWorkoutButtonClicked() {
   <div class="modal" :class="{ 'is-active': mustShowModal }">
     <div class="modal-background" @click="closeModal"></div>
     <div class="modal-content">
-      <form class="box">
+      <form class="box has-background-success-light">
         <div class="field">
           <label class="label">Type of workout</label>
           <div class="control">
@@ -55,7 +55,7 @@ async function onCreateWorkoutButtonClicked() {
             <span>Create Workout</span>
           </button>
 
-          <button class="button" @click="closeModal">
+          <button class="button has-background-danger-light" @click="closeModal">
             <span>Cancel</span>
           </button>
         </p>
