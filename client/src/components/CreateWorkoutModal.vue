@@ -1,18 +1,19 @@
 <script setup lang="ts">
+import { BASE_URL } from "@/data/api";
 import { currentUser } from "@/data/user";
 import { closeModal, mustShowModal, workout, workouts } from "@/model/model";
 import axios from "axios";
 
 async function reloadWorkouts() {
   const { data } = await axios.get(
-    `http://localhost:3000/workout/${currentUser.value?._id}`
+    `${BASE_URL}/workout/${currentUser.value?._id}`
   );
 
   workouts.value = data;
 }
 
 async function onCreateWorkoutButtonClicked() {
-  await axios.post("http://localhost:3000/workout", {
+  await axios.post(`${BASE_URL}/workout`, {
     ...workout.value,
     userId: currentUser.value?._id,
   });

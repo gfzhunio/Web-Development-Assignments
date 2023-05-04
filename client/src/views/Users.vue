@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { currentUser } from "@/data/user";
+import { BASE_URL } from "@/data/api";
 import type { User } from "@/model/user";
 import axios from "axios";
 import { ref } from "vue";
@@ -7,7 +7,7 @@ import { ref } from "vue";
 const users = ref<User[]>([]);
 
 async function getUsers() {
-  const { data } = await axios.get(`http://localhost:3000/user`);
+  const { data } = await axios.get(`${BASE_URL}/user`);
   users.value = data;
 }
 

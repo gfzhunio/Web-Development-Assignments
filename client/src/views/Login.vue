@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { BASE_URL } from "@/data/api";
 import { currentUser } from "@/data/user";
 import router from "@/router";
 import axios from "axios";
@@ -13,7 +14,7 @@ const isPasswordValid = computed(() => password.value.length >= 5);
 async function onLoginButtonClicked() {
   try {
     const body = { username: username.value, password: password.value };
-    const { data } = await axios.post("http://localhost:3000/login", body);
+    const { data } = await axios.post(`${BASE_URL}/login`, body);
 
     currentUser.value = data;
     localStorage.setItem("user", JSON.stringify(currentUser.value));

@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import { BASE_URL } from '@/data/api';
 import { workouts } from '@/model/model';
 import axios from 'axios';
 
 async function reloadWorkouts() {
-  const { data } = await axios.get("http://localhost:3000/workout");
+  const { data } = await axios.get(`${BASE_URL}/workout`);
 
   workouts.value = data;
 }

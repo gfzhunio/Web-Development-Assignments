@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { BASE_URL } from "@/data/api";
 import { currentUser } from "@/data/user";
 import { showModal, workouts } from "@/model/model";
 import axios from "axios";
@@ -6,14 +7,14 @@ import CreateWorkoutModal from "./CreateWorkoutModal.vue";
 
 async function reloadWorkouts() {
   const { data } = await axios.get(
-    `http://localhost:3000/workout/${currentUser.value?._id}`
+    `${BASE_URL}/workout/${currentUser.value?._id}`
   );
 
   workouts.value = data;
 }
 
 async function deleteWorkout(workoutId: string) {
-  await axios.delete(`http://localhost:3000/workout/${workoutId}`);
+  await axios.delete(`${BASE_URL}/workout/${workoutId}`);
   await reloadWorkouts();
 }
 
@@ -65,7 +66,7 @@ reloadWorkouts();
 
             <div class="level">
               <div class="level-left">
-                <a class="level-item ">
+                <a class="level-item">
                   <span class="icon is-small"
                     ><i class="fas fa-reply"></i
                   ></span>
@@ -84,7 +85,10 @@ reloadWorkouts();
             </div>
           </div>
           <div class="right">
-            <button class="delete" @click="deleteWorkout(workout._id as string)"></button>
+            <button
+              class="delete"
+              @click="deleteWorkout(workout._id as string)"
+            ></button>
           </div>
         </article>
       </div>
@@ -102,5 +106,4 @@ reloadWorkouts();
   grid-template-columns: 8ch auto;
   margin-left: 10px;
 }
-
 </style>
