@@ -15,7 +15,7 @@ getUsers();
 </script>
 <template>
   <div class="container is-fluid">
-    <button class="button is-primary mt-5">
+    <button class="button is-success mt-5">
       <span class="icon is-small">
         <i class="fa-sharp fa-solid fa-plus"></i>
       </span>
@@ -24,7 +24,7 @@ getUsers();
   </div>
   <div class="container is-fluid mt-2">
     <table
-      class="table is-bordered is-stripped is-narrow is-hoverable is-fullwidth"
+      class="table is-bordered is-stripped is-narrow is-hoverable is-fullwidth has-background-success-light"
     >
       <thead>
         <tr>

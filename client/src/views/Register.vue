@@ -34,7 +34,7 @@ async function onRegisterButtonClicked() {
 </script>
 
 <template>
-  <div class="box mt-5 is-centered">
+  <div class="box mt-5 is-centered has-background-success-light">
     <div class="container is-fluid">
       <!-- USERNAME -->
       <div class="field">
@@ -108,7 +108,6 @@ async function onRegisterButtonClicked() {
 <style scoped>
 .box {
   margin: auto;
-  background-color: rgb(239, 245, 203);
   width: 382px;
 }
 </style>

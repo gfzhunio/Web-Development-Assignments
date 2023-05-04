@@ -91,21 +91,21 @@ function onLogoutButtonClick() {
             <div class="buttons">
               <RouterLink
                 v-if="!currentUser"
-                class="button is-primary"
+                class="button has-background-primary-light"
                 to="/register"
               >
                 <strong>Register</strong>
               </RouterLink>
               <RouterLink
                 v-if="!currentUser"
-                class="button is-light"
+                class="button has-background-warning-light"
                 to="/login"
                 >Login</RouterLink
               >
-              <button v-if="currentUser" class="button is-light">{{ currentUser.username }}</button>
+              <button v-if="currentUser" class="button has-background-primary-light">Welcome {{ currentUser.username }}</button>
               <button
                 v-if="currentUser"
-                class="button is-light"
+                class="button has-background-warning-light"
                 @click="onLogoutButtonClick"
               >
                 Logout

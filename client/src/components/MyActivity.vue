@@ -21,7 +21,7 @@ reloadWorkouts();
 </script>
 
 <template>
-  <div class="container is-fluid is-max-desktop mt-3">
+  <div class="container is-fluid mt-5">
     <h1 class="title has-text-success-dark">My activity</h1>
 
     <button

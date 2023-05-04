@@ -48,7 +48,7 @@ async function onLoginButtonClicked() {
 
       <!-- PASSWORD -->
       <div class="field">
-        <label class="label">Password</label>
+        <label class="label has-text-success-dark">Password</label>
         <div class="control has-icons-left has-icons-right">
           <input
             class="input is-success is-outlined"
