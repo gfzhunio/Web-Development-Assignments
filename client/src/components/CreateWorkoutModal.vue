@@ -56,7 +56,7 @@ async function onCreateWorkoutButtonClicked() {
             <span>Create Workout</span>
           </button>
 
-          <button class="button has-background-danger-light" @click="closeModal">
+          <button class="button has-background-danger-light" @click.prevent="closeModal">
             <span>Cancel</span>
           </button>
         </p>
