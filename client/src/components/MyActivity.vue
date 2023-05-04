@@ -99,7 +99,7 @@ reloadWorkouts();
 .columns {
   column-gap: 50px;
   column-width: auto;
-  rid-template-columns: 8ch auto;
+  grid-template-columns: 8ch auto;
   margin-left: 10px;
 }
 
