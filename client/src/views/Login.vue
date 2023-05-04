@@ -8,6 +8,8 @@ import { computed, ref } from "vue";
 const username = ref("gzhunio");
 const password = ref("12345");
 
+const loginFailed = ref("");
+
 const isUsernameValid = computed(() => username.value.length >= 5);
 const isPasswordValid = computed(() => password.value.length >= 5);
 
@@ -19,8 +21,11 @@ async function onLoginButtonClicked() {
     currentUser.value = data;
     localStorage.setItem("user", JSON.stringify(currentUser.value));
     router.push("/");
-  } catch (error) {
+  } catch (error: any) {
     currentUser.value = null;
+    loginFailed.value =
+      error.response.data.message ??
+      "Authentication failed: Please enter valid username or password";
   }
 }
 </script>
@@ -63,6 +68,10 @@ async function onLoginButtonClicked() {
         </div>
         <p v-if="!isPasswordValid" class="help is-danger">
           Please enter at least 5 characters
+        </p>
+
+        <p v-if="loginFailed" class="help is-danger">
+          {{ loginFailed }}
         </p>
       </div>
 

@@ -27,12 +27,17 @@ app.post("/login", async (req: Request, res: Response) => {
   if (user) {
     res.send(user);
   } else {
-    res.status(404).send({ message: "Could not find user" });
+    res
+      .status(404)
+      .send({
+        message:
+          "Authentication failed: Please enter valid username or password",
+      });
   }
 });
 
 app.post("/user", async (req: Request, res: Response) => {
-  const { username, email, password, isAdmin = false} = req.body;
+  const { username, email, password, isAdmin = false } = req.body;
 
   const { insertedId } = await Collection.user.insertOne({
     username,
@@ -46,13 +51,13 @@ app.post("/user", async (req: Request, res: Response) => {
   res.send(user);
 });
 
-app.get("/user", async (req: Request, res: Response)=> {
+app.get("/user", async (req: Request, res: Response) => {
   const users = await Collection.user.find().toArray();
 
-  for(const user of users){
+  for (const user of users) {
     user.user = await Collection.user.findOne({
       _id: new ObjectId(user.userId),
-    })
+    });
   }
   res.send(users);
 });
